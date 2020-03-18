@@ -1,0 +1,7 @@
+/.idea/
+/client/client.iml
+/server/server.iml
+.class
+/jackson-all-1.9.9.jar
+/in.json
+/out.json
