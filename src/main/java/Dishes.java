@@ -2,14 +2,15 @@ import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.ObjectMapper;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Dishes implements Serializable {
-    @JsonProperty
+    @JsonProperty("dishesList")
     private List<Dish> dishesList;
+    @JsonProperty
     private Date id;
 
     public Dishes() {
@@ -17,18 +18,10 @@ public class Dishes implements Serializable {
         this.id = new Date();
     }
 
-    public Dishes(List<Dish> dishesList) {
+    @JsonCreator
+    protected Dishes(@JsonProperty("dishesList") List<Dish> dishesList) {
         this.dishesList = dishesList;
         this.id = new Date();
-    }
-
-    @JsonCreator
-    public Dishes(
-            @JsonProperty("id") Date id,
-            @JsonProperty("dishesList") List<Dish> dishesList
-    ) {
-        this.id = id;
-        this.dishesList = dishesList;
     }
 
     @JsonIgnore
@@ -36,6 +29,7 @@ public class Dishes implements Serializable {
         return this.dishesList.size();
     }
 
+    @JsonIgnore
     public Date getId() {
         return this.id;
     }
