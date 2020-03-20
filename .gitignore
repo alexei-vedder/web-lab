@@ -1,7 +1,4 @@
 /.idea/
-/client/client.iml
-/server/server.iml
-.class
-/jackson-all-1.9.9.jar
+/target/
 /in.json
 /out.json
