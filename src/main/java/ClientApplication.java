@@ -19,7 +19,7 @@ public class ClientApplication {
     ));
 
     private static void createMock(File file) throws IOException {
-        new Dishes(dishesMock).writeToJSON(file);
+        new Ration(dishesMock).writeToJSON(file);
     }
 
     public static void main(String ...args) throws IOException, NamingException {
@@ -33,12 +33,12 @@ public class ClientApplication {
 
         createMock(new File(inputFilePath));
 
-        Dishes dishes = new Dishes();
-        dishes.readFromJSON(new File(inputFilePath));
+        Ration ration = new Ration();
+        ration.readFromJSON(new File(inputFilePath));
 
         Context context = new InitialContext();
         SortingService sortingService = (SortingService) context.lookup("rmi://localhost/dishes");
-        Dishes sortedAndFilteredDishes = sortingService.sortAndFilterUniqueItems(dishes);
-        sortedAndFilteredDishes.writeToJSON(new File(outputFilePath));
+        Ration sortedAndFilteredRation = sortingService.sortAndFilterUniqueItems(ration);
+        sortedAndFilteredRation.writeToJSON(new File(outputFilePath));
     }
 }

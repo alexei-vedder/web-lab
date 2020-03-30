@@ -5,9 +5,9 @@ public class SortingServiceImpl extends UnicastRemoteObject implements SortingSe
     protected SortingServiceImpl() throws RemoteException {}
 
     @Override
-    public Dishes sortAndFilterUniqueItems(Dishes dishes) {
-        dishes.filterUniqueItems();
-        dishes.sort();
-        return dishes;
+    public Ration sortAndFilterUniqueItems(Ration ration) {
+        ration.filterUniqueItems();
+        ration.sort();
+        return ration;
     }
 }
