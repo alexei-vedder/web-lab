@@ -82,6 +82,11 @@ public class Dish implements Serializable {
     }
 
     @Override
+    public String toString() {
+        return getName() + " " + getCaloriePer100g() + " " + getMassInG();
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(this.name, this.caloriePer100g, this.massInG);
     }

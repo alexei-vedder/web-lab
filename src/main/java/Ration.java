@@ -1,8 +1,7 @@
 import java.io.*;
+import java.sql.Timestamp;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.sql.Date;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -12,26 +11,26 @@ public class Ration implements Serializable {
     @JsonProperty("dishList")
     private List<Dish> dishList;
     @JsonProperty
-    private Date id;
+    private Timestamp id;
 
     @Deprecated
     public Ration() {
         this.dishList = new ArrayList<>();
-        this.id = new Date(System.currentTimeMillis());
+        this.id = new Timestamp(System.currentTimeMillis());
     }
 
     public Ration(List<Dish> dishList) {
         this.dishList = dishList;
-        this.id = new Date(System.currentTimeMillis());
+        this.id = new Timestamp(System.currentTimeMillis());
     }
 
-    public Ration(Date id) {
+    public Ration(Timestamp id) {
         this.dishList = new ArrayList<>();
         this.id = id;
     }
 
     @JsonCreator
-    public Ration(@JsonProperty("dishList") List<Dish> dishList, @JsonProperty("id") Date id) {
+    public Ration(@JsonProperty("dishList") List<Dish> dishList, @JsonProperty("id") Timestamp id) {
         this.dishList = dishList;
         this.id = id;
     }
@@ -42,7 +41,7 @@ public class Ration implements Serializable {
     }
 
     @JsonIgnore
-    public Date getId() {
+    public Timestamp getId() {
         return this.id;
     }
 
@@ -83,5 +82,10 @@ public class Ration implements Serializable {
 
     public void filterUniqueItems() {
         this.dishList = this.dishList.stream().distinct().collect(Collectors.toList());
+    }
+
+    @Override
+    public String toString() {
+        return getId().toString() + " " + getDishList();
     }
 }

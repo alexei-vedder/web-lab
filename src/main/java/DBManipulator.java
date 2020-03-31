@@ -1,10 +1,8 @@
 import java.sql.*;
-import java.time.Instant;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
-// TODO fill queries
 class MockQueries {
     public static final String tablesCreationSQL = "create table dieting_person\n" +
             "(\n" +
@@ -202,7 +200,7 @@ class MockQueries {
 }
 
 class MockValues {
-    public static final Date rationId = new Date(Instant.parse("2020-03-20 20:58:45.000000").toEpochMilli());
+    public static final Timestamp rationId = new Timestamp(new java.util.Date(1584723525000L).getTime()); // 1584723525000L == "2020-03-20 20:58:45.000000"
     public static final Ration ration = new Ration(rationId);
     public static final DietingPerson user = new DietingPerson(
             "jojo",
@@ -210,12 +208,12 @@ class MockValues {
             "Jo",
             UUID.fromString("a8c8bc36-ec0b-434c-a3b8-5695ab332afd")
     );
-    public static final Dish dish = new Dish("гречка", 400, 200);
+    public static final Dish dish = new Dish("buckwheat", 400, 200);
 }
 
 public class DBManipulator {
     // also possible: statement.execute("SET CURRENT_SCHEMA=web-lab.web_lab_schema");
-    private static final String url = "jdbc:postgresql:web-lab?currentSchema=web-lab.web_lab_schema";
+    private static final String url = "jdbc:postgresql:web-lab"; // ?currentSchema=web-lab.web_lab_schema";
     private static final String user = "postgres";
     private static final String password = "12345";
 
@@ -227,17 +225,21 @@ public class DBManipulator {
 
     public static void main(String ...args) throws SQLException, ClassNotFoundException {
         DBManipulator manipulator = new DBManipulator();
-        manipulator.createTables();
-        manipulator.fillTables();
-
-       // manipulator.deleteRation(MockValues.ration);
-
-        manipulator.deleteDish(MockValues.dish);
+        // manipulator.createTables();
+        // manipulator.fillTables();
+        // manipulator.deleteRation(MockValues.ration);
+        // manipulator.deleteDish(MockValues.dish);
         boolean exist = manipulator.checkUserExistence(MockValues.user.getLogin(), MockValues.user.getPassword());
         Ration ration = manipulator.getRationById(MockValues.rationId);
         List<Ration> rations = manipulator.getUsersRations(MockValues.user);
         List<Dish> dishes = manipulator.getDishesByCalorie(100, 200);
         double mass = manipulator.getMassOfAllRationDishes(MockValues.rationId);
+
+        System.out.println(exist);
+        System.out.println(dishes);
+        System.out.println(ration);
+        System.out.println(rations);
+        System.out.println(mass);
     }
 
     public void createTables() throws SQLException, ClassNotFoundException {
@@ -259,11 +261,11 @@ public class DBManipulator {
     }
 
     public void deleteRation(Ration ration) throws SQLException, ClassNotFoundException {
-        Date rationId = ration.getId();
+        Timestamp rationId = ration.getId();
         Connection connection = this.connect();
         Statement statement = connection.createStatement();
-        statement.executeUpdate("DELETE FROM web_lab_schema.ration_dish WHERE ration_id =" + rationId);
-        statement.executeUpdate("DELETE FROM web_lab_schema.ration WHERE id =" + rationId);
+        statement.executeUpdate("DELETE FROM web_lab_schema.ration_dish WHERE ration_id = '" + rationId + "'");
+        statement.executeUpdate("DELETE FROM web_lab_schema.ration WHERE id = '" + rationId + "'");
         System.out.println("the ration has been deleted");
         statement.close();
         connection.close();
@@ -273,8 +275,8 @@ public class DBManipulator {
         String dishName = dish.getName();
         Connection connection = this.connect();
         Statement statement = connection.createStatement();
-        statement.executeUpdate("DELETE FROM web_lab_schema.ration_dish WHERE dish_name LIKE" + dishName);
-        statement.executeUpdate("DELETE FROM web_lab_schema.dish WHERE name LIKE" + dishName);
+        statement.executeUpdate("DELETE FROM web_lab_schema.ration_dish WHERE dish_name LIKE '" + dishName + "'");
+        statement.executeUpdate("DELETE FROM web_lab_schema.dish WHERE name LIKE '" + dishName+ "'");
         System.out.println("the dish has been deleted");
         statement.close();
         connection.close();
@@ -283,19 +285,14 @@ public class DBManipulator {
     public boolean checkUserExistence(String login, String password) throws SQLException, ClassNotFoundException {
         Connection connection = this.connect();
         Statement statement = connection.createStatement();
-        ResultSet userExist = statement.executeQuery("SELECT * FROM web_lab_schema.dieting_person WHERE login = " + login + " AND password = " + password);
+        ResultSet userExist = statement.executeQuery("SELECT * FROM web_lab_schema.dieting_person WHERE login = '" + login + "' AND password = '" + password + "'");
         return userExist.next();
     }
 
-    public Ration getRationById(Date rationId) throws SQLException, ClassNotFoundException {
+    public Ration getRationById(Timestamp rationId) throws SQLException, ClassNotFoundException {
         Connection connection = this.connect();
         Statement statement = connection.createStatement();
-        ResultSet dishNamesRough = statement.executeQuery("SELECT dish_name FROM web_lab_schema.ration_dish WHERE ration_id = " + rationId);
-        /*LinkedList<String> dishNames = new LinkedList<>();
-        while(dishNamesRough.next()) {
-            dishNames.add(dishNamesRough.getString(1));
-        }*/
-        ResultSet dishesRough = statement.executeQuery("SELECT * FROM web_lab_schema.dish WHERE name IN(" + dishNamesRough + ")");
+        ResultSet dishesRough = statement.executeQuery("SELECT * FROM web_lab_schema.dish WHERE name IN(SELECT dish_name FROM web_lab_schema.ration_dish WHERE ration_id = '" + rationId + "')");
         Ration ration = new Ration(rationId);
         while (dishesRough.next()) {
             String name = dishesRough.getString(1);
@@ -312,10 +309,10 @@ public class DBManipulator {
         UUID userId = user.getId();
         Connection connection = this.connect();
         Statement statement = connection.createStatement();
-        ResultSet rationIdsRough = statement.executeQuery("SELECT id FROM web_lab_schema.ration WHERE dieting_person_id = " + userId);
+        ResultSet rationIdsRough = statement.executeQuery("SELECT id FROM web_lab_schema.ration WHERE dieting_person_id = '" + userId + "'");
         List<Ration> rations = new LinkedList<>();
         while (rationIdsRough.next()) {
-            rations.add(this.getRationById(rationIdsRough.getDate(1)));
+            rations.add(this.getRationById(rationIdsRough.getTimestamp(1)));
         }
         statement.close();
         connection.close();
@@ -338,11 +335,11 @@ public class DBManipulator {
         return dishes;
     }
 
-    public double getMassOfAllRationDishes(Date rationId) throws SQLException, ClassNotFoundException {
+    public double getMassOfAllRationDishes(Timestamp rationId) throws SQLException, ClassNotFoundException {
         Connection connection = this.connect();
         Statement statement = connection.createStatement();
-        ResultSet sumRough = statement.executeQuery("SELECT SUM(mass_in_g) FROM web_lab_schema.dish WHERE dish_name IN(\n" +
-                "\tSELECT dish_name FROM web_lab_schema.ration_dish WHERE ration_id = " + rationId + ")");
+        ResultSet sumRough = statement.executeQuery("SELECT SUM(mass_in_g) FROM web_lab_schema.dish WHERE name IN(\n" +
+                "\tSELECT dish_name FROM web_lab_schema.ration_dish WHERE ration_id = '" + rationId + "')");
         double sum = sumRough.next() ? sumRough.getDouble(1) : null;
         statement.close();
         connection.close();

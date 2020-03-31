@@ -5,22 +5,22 @@ public class DietingPerson {
     private String name;
     private String login;
     private String password;
-    private List<Ration> ration;
+    private List<Ration> rations;
 
     DietingPerson(String login, String password, String name, UUID id) {
         this.id = id; // UUID.randomUUID();
         this.login = login;
         this.password = password;
         this.name = name;
-        this.ration = new ArrayList<>();
+        this.rations = new ArrayList<>();
     }
 
     public void addRation(Ration ration) {
-        this.ration.add(ration);
+        this.rations.add(ration);
     }
 
     public void deleteRation(Ration ration) {
-        this.ration.remove(ration);
+        this.rations.remove(ration);
     }
 
     public UUID getId() {
@@ -36,10 +36,19 @@ public class DietingPerson {
     }
 
     public List<Ration> getRations() {
-        return this.ration;
+        return this.rations;
     }
 
     public int getRationsTotal() {
-        return this.ration.size();
+        return this.rations.size();
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public String toString() {
+        return getId() + " " + getLogin() + " " + getName() + " " + getRations();
     }
 }
