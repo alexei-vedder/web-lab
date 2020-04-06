@@ -118,18 +118,64 @@ class MockQueries {
             "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('блины с черной икрой', 400, 200);\n" +
             "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('трехслойный пирог', 400, 200);\n" +
             "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('пирог с капустой', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('пирог с красной рыбой', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('пирог с мясом', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('торт птичье молоко', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('торт сникерс', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('торт тирамису', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('чизкейк карамельный', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('чизкейк лимонный', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('чизкейк шоколадный', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('селедка под шубой', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('чечевица', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('рис', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('гречка', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorINSERT INTO web_lab_schema.dieting_person (name, id, login, password) VALUES ('Jo', 'a8c8bc36-ec0b-434c-a3b8-5695ab332afd', 'jojo', '123');\n" +
+            "INSERT INTO web_lab_schema.dieting_person (name, id, login, password) VALUES ('Adam', '702e39f9-64bb-48a8-a4da-fec007c032d9', 'adamantium', '123');\n" +
+            "INSERT INTO web_lab_schema.dieting_person (name, id, login, password) VALUES ('Jerry', '35a0f6b8-be03-4bf9-bd75-276f7c7dec14', 'jerk', '123');\n" +
+            "INSERT INTO web_lab_schema.dieting_person (name, id, login, password) VALUES ('Russ', '6f0d311b-28fc-4935-b8e6-4e7eb53a6288', 'justruss', '123');\n" +
+            "INSERT INTO web_lab_schema.dieting_person (name, id, login, password) VALUES ('Mary', '005d02cc-2ef9-4737-9b66-2a9a2d38452f', 'maryangel', '123');\n" +
+            "\n" +
+            "----------------------------------------------------------------------\n" +
+            "\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('borsch', 200, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('borsch Ukrainian', 300, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('baked cabbage', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('cabbage soup', 300, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('cabbage soup with fish', 350, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('cabbage soup vegetarian', 150, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('pasta with shrooms', 300, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('pasta with chicken', 350, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('fish soup', 500, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('bisque', 300, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('cheese soup', 300, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('chicken kebab', 300, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('pig kebab', 500, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('cow kebab', 500, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('fish kebab', 500, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('chicken meatballs', 500, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('cow meatballs', 500, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('fish meatballs', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('steamed veggies', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('baked veggies', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('fries', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('chips', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('baked potato', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('soya meatballs', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('vatrushka', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('king vatrushka', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('Hungarian', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('Napoleon cake', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('Prague cake', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('chocolate cake', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('count ruins cake', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('chocolate muffins', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('pistachio cake', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('cheese pancakes', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('red caviar pancakes', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('black caviar pancakes', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('triple-layer cake', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('cabbage pie', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('apple pie', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('meat pie', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('cherry pie', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('snikers cake', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('tiramisu cake', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('caramel cheesecake', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('lemon cheesecake', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('chocolate cheesecake', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('omelette', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('lentils', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('rice', 400, 200);\n" +
+            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('buckwheat', 400, 200);\n" +
             "\n" +
             "----------------------------------------------------------------------\n" +
             "\n" +
@@ -146,56 +192,56 @@ class MockQueries {
             "\n" +
             "----------------------------------------------------------------------\n" +
             "\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:45.000000', 'борщ русский');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:45.000000', 'борщ украинский');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:45.000000', 'солянка');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:45.000000', 'щи');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:45.000000', 'щи с рыбой');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:46.000000', 'щи вегетарианские');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:46.000000', 'лапша с грибами');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:46.000000', 'лапша с курицей');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:46.000000', 'уха');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:46.000000', 'суп-пюре картофельный');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:47.000000', 'сырный суп');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:47.000000', 'шашлык куриный');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:47.000000', 'шашлык свиной');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:47.000000', 'шашлык говяжий');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:47.000000', 'шашлык рыбный');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:48.000000', 'котлеты куриные');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:48.000000', 'котлеты говяжие');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:48.000000', 'котлеты рыбные');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:48.000000', 'тушеные овощи');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:48.000000', 'печеные овощи');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:49.000000', 'картошка по-деревенски');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:49.000000', 'картошка фри');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:49.000000', 'картофель в мундире');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:49.000000', 'котлеты соевые');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:49.000000', 'ватрушка обыкновенная');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:50.000000', 'королевская ватрушка');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:50.000000', 'венгерка');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:50.000000', 'торт наполеон');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:50.000000', 'торт прага');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:50.000000', 'муссовый шоколадный торт');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:51.000000', 'торт графские развалины');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:51.000000', 'шоколадные маффины');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:51.000000', 'фисташковый торт');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:51.000000', 'сырники');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:51.000000', 'блины с красной икрой');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:52.000000', 'блины с черной икрой');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:52.000000', 'трехслойный пирог');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:52.000000', 'пирог с капустой');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:52.000000', 'пирог с красной рыбой');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:52.000000', 'пирог с мясом');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:53.000000', 'торт птичье молоко');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:53.000000', 'торт сникерс');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:53.000000', 'торт тирамису');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:53.000000', 'чизкейк карамельный');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:53.000000', 'чизкейк лимонный');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:54.000000', 'чизкейк шоколадный');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:54.000000', 'селедка под шубой');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:54.000000', 'чечевица');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:54.000000', 'рис');\n" +
-            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:54.000000', 'гречка');";
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:45.000000', 'baked cabbage');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:47.000000', 'cow kebab');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:49.000000', 'chips');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:46.000000', 'cabbage soup vegetarian');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:45.000000', 'borsch');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:50.000000', 'Hungarian');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:47.000000', 'cheese soup');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:51.000000', 'red caviar pancakes');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:50.000000', 'Napoleon cake');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:48.000000', 'chicken meatballs');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:47.000000', 'fish kebab');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:52.000000', 'triple-layer cake');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:50.000000', 'Prague cake');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:48.000000', 'cow meatballs');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:50.000000', 'chocolate cake');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:53.000000', 'snikers cake');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:47.000000', 'pig kebab');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:53.000000', 'cherry pie');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:51.000000', 'count ruins cake');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:52.000000', 'black caviar pancakes');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:47.000000', 'chicken kebab');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:51.000000', 'chocolate muffins');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:51.000000', 'cheese pancakes');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:48.000000', 'baked veggies');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:53.000000', 'tiramisu cake');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:49.000000', 'fries');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:53.000000', 'lemon cheesecake');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:54.000000', 'chocolate cheesecake');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:46.000000', 'pasta with shrooms');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:48.000000', 'fish meatballs');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:54.000000', 'rice');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:46.000000', 'pasta with chicken');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:48.000000', 'steamed veggies');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:46.000000', 'fish soup');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:49.000000', 'vatrushka');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:52.000000', 'meat pie');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:46.000000', 'bisque');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:45.000000', 'cabbage soup');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:50.000000', 'king vatrushka');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:49.000000', 'soya meatballs');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:53.000000', 'caramel cheesecake');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:54.000000', 'omelette');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:45.000000', 'borsch Ukrainian');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:45.000000', 'cabbage soup with fish');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:51.000000', 'pistachio cake');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:54.000000', 'lentils');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:52.000000', 'apple pie');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:49.000000', 'baked potato');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:52.000000', 'cabbage pie');\n" +
+            "INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES ('2020-03-20 20:58:54.000000', 'buckwheat');";
 
 }
 
@@ -263,36 +309,69 @@ public class DBManipulator {
     public void deleteRation(Ration ration) throws SQLException, ClassNotFoundException {
         Timestamp rationId = ration.getId();
         Connection connection = this.connect();
-        Statement statement = connection.createStatement();
-        statement.executeUpdate("DELETE FROM web_lab_schema.ration_dish WHERE ration_id = '" + rationId + "'");
-        statement.executeUpdate("DELETE FROM web_lab_schema.ration WHERE id = '" + rationId + "'");
-        System.out.println("the ration has been deleted");
-        statement.close();
-        connection.close();
+        connection.setAutoCommit(false);
+        PreparedStatement statement = null;
+        Savepoint savepoint = connection.setSavepoint();
+        try {
+            statement = connection.prepareStatement("DELETE FROM web_lab_schema.ration_dish WHERE ration_id = ?");
+            statement.setTimestamp(1, rationId);
+            statement.executeUpdate();
+            statement = connection.prepareStatement("DELETE FROM web_lab_schema.ration WHERE id = ?");
+            statement.setTimestamp(1, rationId);
+            statement.executeUpdate();
+            System.out.println("the ration has been deleted");
+            statement.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+            connection.rollback(savepoint);
+        } finally {
+            connection.releaseSavepoint(savepoint);
+            connection.close();
+        }
+
     }
 
     public void deleteDish(Dish dish) throws SQLException, ClassNotFoundException {
         String dishName = dish.getName();
         Connection connection = this.connect();
-        Statement statement = connection.createStatement();
-        statement.executeUpdate("DELETE FROM web_lab_schema.ration_dish WHERE dish_name LIKE '" + dishName + "'");
-        statement.executeUpdate("DELETE FROM web_lab_schema.dish WHERE name LIKE '" + dishName+ "'");
-        System.out.println("the dish has been deleted");
-        statement.close();
-        connection.close();
+        connection.setAutoCommit(false);
+        PreparedStatement statement = null;
+        Savepoint savepoint = connection.setSavepoint();
+        try {
+            statement = connection.prepareStatement("DELETE FROM web_lab_schema.ration_dish WHERE dish_name LIKE ?");
+            statement.setString(1, dishName);
+            statement.executeUpdate();
+            statement = connection.prepareStatement("DELETE FROM web_lab_schema.dish WHERE name LIKE ?");
+            statement.setString(1, dishName);
+            statement.executeUpdate();
+            System.out.println("the dish has been deleted");
+            statement.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+            connection.rollback(savepoint);
+        } finally {
+            connection.releaseSavepoint(savepoint);
+            connection.close();
+        }
     }
 
     public boolean checkUserExistence(String login, String password) throws SQLException, ClassNotFoundException {
         Connection connection = this.connect();
-        Statement statement = connection.createStatement();
-        ResultSet userExist = statement.executeQuery("SELECT * FROM web_lab_schema.dieting_person WHERE login = '" + login + "' AND password = '" + password + "'");
-        return userExist.next();
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM web_lab_schema.dieting_person WHERE login = ? AND password = ?");
+        statement.setString(1, login);
+        statement.setString(2, password);
+        ResultSet userExistRough = statement.executeQuery();
+        boolean userExist = userExistRough.next();
+        statement.close();
+        connection.close();
+        return userExist;
     }
 
     public Ration getRationById(Timestamp rationId) throws SQLException, ClassNotFoundException {
         Connection connection = this.connect();
-        Statement statement = connection.createStatement();
-        ResultSet dishesRough = statement.executeQuery("SELECT * FROM web_lab_schema.dish WHERE name IN(SELECT dish_name FROM web_lab_schema.ration_dish WHERE ration_id = '" + rationId + "')");
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM web_lab_schema.dish WHERE name IN(SELECT dish_name FROM web_lab_schema.ration_dish WHERE ration_id = ? )");
+        statement.setTimestamp(1, rationId);
+        ResultSet dishesRough = statement.executeQuery();
         Ration ration = new Ration(rationId);
         while (dishesRough.next()) {
             String name = dishesRough.getString(1);
@@ -308,8 +387,9 @@ public class DBManipulator {
     public List<Ration> getUsersRations(DietingPerson user) throws SQLException, ClassNotFoundException {
         UUID userId = user.getId();
         Connection connection = this.connect();
-        Statement statement = connection.createStatement();
-        ResultSet rationIdsRough = statement.executeQuery("SELECT id FROM web_lab_schema.ration WHERE dieting_person_id = '" + userId + "'");
+        PreparedStatement statement = connection.prepareStatement("SELECT id FROM web_lab_schema.ration WHERE dieting_person_id = ?");
+        statement.setObject(1, userId);
+        ResultSet rationIdsRough = statement.executeQuery();
         List<Ration> rations = new LinkedList<>();
         while (rationIdsRough.next()) {
             rations.add(this.getRationById(rationIdsRough.getTimestamp(1)));
@@ -321,8 +401,10 @@ public class DBManipulator {
 
     public List<Dish> getDishesByCalorie(double from, double to) throws SQLException, ClassNotFoundException {
         Connection connection = this.connect();
-        Statement statement = connection.createStatement();
-        ResultSet dishesRough = statement.executeQuery("SELECT * FROM web_lab_schema.dish WHERE calorie_per_100g BETWEEN " + from + " AND " + to);
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM web_lab_schema.dish WHERE calorie_per_100g BETWEEN ? AND ?");
+        statement.setDouble(1, from);
+        statement.setDouble(2, to);
+        ResultSet dishesRough = statement.executeQuery();
         List<Dish> dishes = new LinkedList<>();
         while (dishesRough.next()) {
             String name = dishesRough.getString(1);
@@ -337,9 +419,9 @@ public class DBManipulator {
 
     public double getMassOfAllRationDishes(Timestamp rationId) throws SQLException, ClassNotFoundException {
         Connection connection = this.connect();
-        Statement statement = connection.createStatement();
-        ResultSet sumRough = statement.executeQuery("SELECT SUM(mass_in_g) FROM web_lab_schema.dish WHERE name IN(\n" +
-                "\tSELECT dish_name FROM web_lab_schema.ration_dish WHERE ration_id = '" + rationId + "')");
+        PreparedStatement statement = connection.prepareStatement("SELECT SUM(mass_in_g) FROM web_lab_schema.dish WHERE name IN(SELECT dish_name FROM web_lab_schema.ration_dish WHERE ration_id = ? )");
+        statement.setTimestamp(1, rationId);
+        ResultSet sumRough = statement.executeQuery();
         double sum = sumRough.next() ? sumRough.getDouble(1) : null;
         statement.close();
         connection.close();
