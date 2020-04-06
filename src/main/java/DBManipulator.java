@@ -273,6 +273,7 @@ public class DBManipulator {
             statement = connection.prepareStatement("DELETE FROM web_lab_schema.ration WHERE id = ?");
             statement.setTimestamp(1, rationId);
             statement.executeUpdate();
+            connection.commit();
             System.out.println("the ration has been deleted");
             statement.close();
         } catch (SQLException e) {
@@ -298,6 +299,7 @@ public class DBManipulator {
             statement = connection.prepareStatement("DELETE FROM web_lab_schema.dish WHERE name LIKE ?");
             statement.setString(1, dishName);
             statement.executeUpdate();
+            connection.commit();
             System.out.println("the dish has been deleted");
             statement.close();
         } catch (SQLException e) {
