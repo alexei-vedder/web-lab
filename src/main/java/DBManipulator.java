@@ -80,52 +80,6 @@ class MockQueries {
             "\n" +
             "----------------------------------------------------------------------\n" +
             "\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('борщ русский', 200, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('борщ украинский', 300, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('солянка', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('щи', 300, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('щи с рыбой', 350, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('щи вегетарианские', 150, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('лапша с грибами', 300, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('лапша с курицей', 350, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('уха', 500, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('суп-пюре картофельный', 300, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('сырный суп', 300, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('шашлык куриный', 300, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('шашлык свиной', 500, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('шашлык говяжий', 500, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('шашлык рыбный', 500, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('котлеты куриные', 500, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('котлеты говяжие', 500, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('котлеты рыбные', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('тушеные овощи', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('печеные овощи', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('картошка по-деревенски', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('картошка фри', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('картофель в мундире', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('котлеты соевые', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('ватрушка обыкновенная', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('королевская ватрушка', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('венгерка', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('торт наполеон', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('торт прага', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('муссовый шоколадный торт', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('торт графские развалины', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('шоколадные маффины', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('фисташковый торт', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('сырники', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('блины с красной икрой', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('блины с черной икрой', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('трехслойный пирог', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('пирог с капустой', 400, 200);\n" +
-            "INSERT INTO web_lab_schema.dish (name, calorINSERT INTO web_lab_schema.dieting_person (name, id, login, password) VALUES ('Jo', 'a8c8bc36-ec0b-434c-a3b8-5695ab332afd', 'jojo', '123');\n" +
-            "INSERT INTO web_lab_schema.dieting_person (name, id, login, password) VALUES ('Adam', '702e39f9-64bb-48a8-a4da-fec007c032d9', 'adamantium', '123');\n" +
-            "INSERT INTO web_lab_schema.dieting_person (name, id, login, password) VALUES ('Jerry', '35a0f6b8-be03-4bf9-bd75-276f7c7dec14', 'jerk', '123');\n" +
-            "INSERT INTO web_lab_schema.dieting_person (name, id, login, password) VALUES ('Russ', '6f0d311b-28fc-4935-b8e6-4e7eb53a6288', 'justruss', '123');\n" +
-            "INSERT INTO web_lab_schema.dieting_person (name, id, login, password) VALUES ('Mary', '005d02cc-2ef9-4737-9b66-2a9a2d38452f', 'maryangel', '123');\n" +
-            "\n" +
-            "----------------------------------------------------------------------\n" +
-            "\n" +
             "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('borsch', 200, 200);\n" +
             "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('borsch Ukrainian', 300, 200);\n" +
             "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES ('baked cabbage', 400, 200);\n" +
