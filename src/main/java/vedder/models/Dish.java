@@ -1,5 +1,6 @@
-import com.fasterxml.jackson.annotation.*;
+package vedder.models;
 
+import com.fasterxml.jackson.annotation.*;
 import java.io.*;
 import java.util.Objects;
 

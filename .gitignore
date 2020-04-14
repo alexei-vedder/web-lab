@@ -2,3 +2,5 @@
 /target/
 /in.json
 /out.json
+/out/
+/src/main/resources

@@ -1,3 +1,5 @@
+package vedder.models;
+
 import java.io.*;
 import java.sql.Timestamp;
 import java.util.*;

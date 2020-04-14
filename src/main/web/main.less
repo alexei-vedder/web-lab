@@ -1,0 +1,148 @@
+@color-1: #F0EFFF; //azure;
+@color-2: lightsteelblue;
+@login-form-color: RGBA(215,210,255,0.7); // RGBA(0,0,170,0.06);
+@main-text-color: darkslateblue;
+@transition-duration: 0.3s;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Slab', serif;
+    background: @color-1;
+    color: @main-text-color;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.title {
+    font-family: 'Ubuntu', sans-serif;
+    text-shadow: 0 0 6px rgba(@main-text-color, 0.6);
+    cursor: pointer;
+    width: fit-content;
+    position: relative;
+    // font-size: xx-large;
+    // font-weight: 900;
+}
+
+.title::after {
+    content: '';
+    width: 10%;
+    height: 4px;
+    background: rgba(@main-text-color, 0.9);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 40px;
+    opacity: 0;
+    transition-duration: @transition-duration;
+}
+
+.title:hover::after {
+    opacity: 1;
+    width: 100%;
+}
+
+.label {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    font-size: x-small;
+}
+
+.main {
+
+    &-header {
+        margin: 50px 0;
+
+        &__title {
+            margin: 0 0 0 50px;
+        }
+
+        &__greeting {
+            text-align: center;
+            width: fit-content;
+            margin: 0 auto;
+            position: relative;
+        }
+    }
+}
+
+.login {
+    display: flex;
+    height: 350px;
+
+    &-header {
+        margin: 50px 0;
+
+        .title {
+            text-align: center;
+            margin: 0 auto;
+        }
+    }
+
+    &-form {
+        background: @login-form-color;
+        margin: auto auto;
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        height: 250px;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 10px;
+        border: solid 1px @color-2;
+        padding: 30px;
+        cursor: default;
+        transition-duration: @transition-duration;
+
+        &:hover {
+            box-shadow: 0 0 17px 2px @color-2;
+        }
+
+        &__label {
+            background: @login-form-color;
+        }
+
+        &__button {
+            width: 50%;
+            height: 33px;
+        }
+    }
+
+    &-input-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.input {
+    border-radius: 8px;
+    border: solid 3px @color-2;
+    padding-left: 8px;
+    transition-duration: @transition-duration;
+    width: 220px;
+    height: 33px;
+}
+
+.input:focus {
+    outline: none;
+    box-shadow: 0 0 2px 1px @color-2;
+    transform: scale(1.02);
+}
+
+.button {
+    border-radius: 8px;
+    border: solid 3px @color-2;
+    transition-duration: @transition-duration;
+}
+
+.button:hover {
+    cursor: pointer;
+    outline: none;
+    background: @color-2;
+    color: @color-1;
+}

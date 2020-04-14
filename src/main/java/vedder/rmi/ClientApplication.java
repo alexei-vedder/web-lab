@@ -1,3 +1,7 @@
+package vedder.rmi;
+
+import vedder.models.Dish;
+import vedder.models.Ration;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;

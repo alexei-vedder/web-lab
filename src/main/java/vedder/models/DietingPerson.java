@@ -1,3 +1,5 @@
+package vedder.models;
+
 import java.util.*;
 
 public class DietingPerson {
@@ -7,7 +9,7 @@ public class DietingPerson {
     private String password;
     private List<Ration> rations;
 
-    DietingPerson(String login, String password, String name, UUID id) {
+    public DietingPerson(String login, String password, String name, UUID id) {
         this.id = id; // UUID.randomUUID();
         this.login = login;
         this.password = password;
