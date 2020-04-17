@@ -1,7 +1,7 @@
 <%@ page import="java.sql.SQLException" %>
-<%@ page import="vedder.jsp.JSPHelper" %>
+<%@ page import="vedder.models.DietingPerson" %>
+<%@ page import="vedder.controllers.DBManipulator" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 
 <html lang="en">
 <head>
@@ -14,11 +14,28 @@
     <title>Dieters</title>
 </head>
 <body>
+
+<%
+    HttpSession initialHttpSession = request.getSession();
+    DietingPerson userInCookies = (DietingPerson) initialHttpSession.getAttribute("user");
+    DietingPerson userInDB = null;
+    if (userInCookies != null) {
+        try {
+            userInDB = new DBManipulator().getUser(userInCookies.getLogin(), userInCookies.getPassword());
+            if (userInCookies.equals(userInDB)) {
+                response.sendRedirect("result.jsp");
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+%>
+
 <header class="login-header header">
     <h1 class="title">DIETERS - login page</h1>
 </header>
 <main class="login">
-    <form class="login-form" action="index.jsp">
+    <form class="login-form" action="index.jsp" method="post">
         Please, enter your credentials
         <div class="login-input-wrapper">
             <label class="login-form__label label">
@@ -30,21 +47,34 @@
                 <input name="password" class="login-form__input input" type="password">
             </label>
         </div>
-        <input class="login-form__button button" type="submit">
+        <input name="submit" class="login-form__button button" type="submit">
     </form>
     <%
-        boolean isUserExisting = false;
         try {
             String login = request.getParameter("login");
             String password = request.getParameter("password");
-            isUserExisting = JSPHelper.checkCredentials(login, password);
+            String submit = request.getParameter("submit");
+
+            if (submit != null) {
+                if (!login.equals("") && !password.equals("")) {
+                    DietingPerson user = new DBManipulator().getUser(login, password);
+                    if (user != null) {
+                        HttpSession httpSession = request.getSession();
+                        httpSession.setAttribute("user", user);
+                        response.sendRedirect("result.jsp");
+                    } else {
+                        out.println("<div class=\"login-error\">There is no such user</div>");
+                    }
+                } else {
+                    out.println("<div class=\"login-error\">Fill in credentials</div>");
+                }
+            }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        if (!isUserExisting) {
-            System.out.println("user doesn't exist");
-        }
     %>
+
+
 </main>
 </body>
 </html>

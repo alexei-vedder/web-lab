@@ -10,7 +10,7 @@ public class DietingPerson {
     private List<Ration> rations;
 
     public DietingPerson(String login, String password, String name, UUID id) {
-        this.id = id; // UUID.randomUUID();
+        this.id = id;
         this.login = login;
         this.password = password;
         this.name = name;
@@ -52,5 +52,14 @@ public class DietingPerson {
     @Override
     public String toString() {
         return getId() + " " + getLogin() + " " + getName() + " " + getRations();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        DietingPerson person2 = (DietingPerson) obj;
+        return this.getName().equals(person2.getName()) &&
+                this.getId().toString().equals(person2.getId().toString()) &&
+                this.getLogin().equals(person2.getLogin()) &&
+                this.getPassword().equals(person2.getPassword());
     }
 }

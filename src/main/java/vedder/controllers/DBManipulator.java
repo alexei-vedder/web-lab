@@ -217,13 +217,13 @@ class MockValues {
 public class DBManipulator {
     // also possible: statement.execute("SET CURRENT_SCHEMA=web-lab.web_lab_schema");
     private static final String url = "jdbc:postgresql:web-lab"; // ?currentSchema=web-lab.web_lab_schema";
-    private static final String user = "postgres";
-    private static final String password = "12345";
+    private static final String dbUsername = "postgres";
+    private static final String dbPassword = "12345";
 
 
     private Connection connect() throws ClassNotFoundException, SQLException {
         Class.forName("org.postgresql.Driver");
-        return DriverManager.getConnection(url, user, password);
+        return DriverManager.getConnection(url, dbUsername, dbPassword);
     }
 
     public static void main(String ...args) throws SQLException, ClassNotFoundException {
@@ -232,13 +232,13 @@ public class DBManipulator {
         // manipulator.fillTables();
         // manipulator.deleteRation(MockValues.ration);
         // manipulator.deleteDish(MockValues.dish);
-        boolean exist = manipulator.checkUserExistence(MockValues.user.getLogin(), MockValues.user.getPassword());
-        Ration ration = manipulator.getRationById(MockValues.rationId);
+        DietingPerson user = manipulator.getUser(MockValues.user.getLogin(), MockValues.user.getPassword());
+        Ration ration = manipulator.getRation(MockValues.rationId);
         List<Ration> rations = manipulator.getUsersRations(MockValues.user);
         List<Dish> dishes = manipulator.getDishesByCalorie(100, 200);
         double mass = manipulator.getMassOfAllRationDishes(MockValues.rationId);
 
-        System.out.println(exist);
+        System.out.println(user);
         System.out.println(dishes);
         System.out.println(ration);
         System.out.println(rations);
@@ -314,6 +314,24 @@ public class DBManipulator {
         }
     }
 
+    public DietingPerson getUser(String login, String password) throws SQLException, ClassNotFoundException {
+        Connection connection = this.connect();
+        PreparedStatement statement = connection.prepareStatement("SELECT name, id FROM web_lab_schema.dieting_person WHERE login = ? AND password = ?");
+        statement.setString(1, login);
+        statement.setString(2, password);
+        ResultSet userRough = statement.executeQuery();
+        DietingPerson user = null;
+        if (userRough.next()) {
+            String name = userRough.getString(1);
+            UUID id = (UUID)userRough.getObject(2);
+            user = new DietingPerson(login, password, name, id);
+        }
+        statement.close();
+        connection.close();
+        return user;
+    }
+
+    @Deprecated
     public boolean checkUserExistence(String login, String password) throws SQLException, ClassNotFoundException {
         Connection connection = this.connect();
         PreparedStatement statement = connection.prepareStatement("SELECT * FROM web_lab_schema.dieting_person WHERE login = ? AND password = ?");
@@ -326,7 +344,7 @@ public class DBManipulator {
         return userExist;
     }
 
-    public Ration getRationById(Timestamp rationId) throws SQLException, ClassNotFoundException {
+    public Ration getRation(Timestamp rationId) throws SQLException, ClassNotFoundException {
         Connection connection = this.connect();
         PreparedStatement statement = connection.prepareStatement("SELECT * FROM web_lab_schema.dish WHERE name IN(SELECT dish_name FROM web_lab_schema.ration_dish WHERE ration_id = ? )");
         statement.setTimestamp(1, rationId);
@@ -351,7 +369,7 @@ public class DBManipulator {
         ResultSet rationIdsRough = statement.executeQuery();
         List<Ration> rations = new LinkedList<>();
         while (rationIdsRough.next()) {
-            rations.add(this.getRationById(rationIdsRough.getTimestamp(1)));
+            rations.add(this.getRation(rationIdsRough.getTimestamp(1)));
         }
         statement.close();
         connection.close();
