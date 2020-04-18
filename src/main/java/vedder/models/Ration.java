@@ -9,6 +9,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.xml.bind.annotation.*;
+
+@XmlType
+@XmlRootElement(name = "ration")
 public class Ration implements Serializable {
     @JsonProperty("dishList")
     private List<Dish> dishList;
@@ -47,7 +51,14 @@ public class Ration implements Serializable {
         return this.id;
     }
 
+    @XmlElement(name = "ration-id")
+    public String getIdAsString() {
+        return this.id.toString();
+    }
+
     @JsonIgnore
+    @XmlElement(name = "dish")
+    @XmlElementWrapper(name = "dishes")
     public List<Dish> getDishList() {
         return this.dishList;
     }

@@ -73,8 +73,6 @@
             e.printStackTrace();
         }
     %>
-
-
 </main>
 </body>
 </html>

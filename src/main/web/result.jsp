@@ -27,17 +27,19 @@
 %>
 <header class="main-header header">
     <h1 class="main-header__title title">DIETERS</h1>
-    <h2 class="main-header__greeting"> Welcome, <%=user.getName()%>
-    </h2>
-    <%
-        if (request.getParameter("logout") != null) {
-            HttpSession httpSession2 = request.getSession();
-            httpSession2.removeAttribute("user");
-            response.sendRedirect("index.jsp");
-        }
-    %>
-    <form action="#" method="post"><input class="main-header__logout button" name="logout" type="submit"
-                                          value="Log out"></form>
+    <div class="main-header__wrapper">
+        <h2 class="main-header__greeting"> Welcome, <%=user.getName()%></h2>
+        <%
+            if (request.getParameter("logout") != null) {
+                /*HttpSession httpSession2 = request.getSession();*/
+                httpSession.removeAttribute("user");
+                response.sendRedirect("index.jsp");
+            }
+        %>
+        <form action="#" method="post">
+            <input class="main-header__logout button" name="logout" type="submit" value="Log out">
+        </form>
+    </div>
 </header>
 <main>
     <div class="main-wrapper">
@@ -46,9 +48,7 @@
             for (Ration ration : rations) {
         %>
         <table class="main-table table">
-            <%--
-                    <caption>ration name</caption>
-            --%>
+            <%--<caption>ration name</caption>--%>
             <tr class="main-table__head-row">
                 <th>Name</th>
                 <th>Calorie (per 100g)</th>
@@ -77,6 +77,9 @@
             }
         %>
     </div>
+    <form class="main-form" action="result.xml" method="get">
+        <input class="main-form__button button" type="submit" value="See as XML">
+    </form>
 </main>
 <%
     } catch (SQLException | ClassNotFoundException e) {
@@ -86,13 +89,15 @@
 } else {
 %>
 
-<p class="main-redirect">User not found<br>you will be redirected to the login page after 5 seconds<a href="index.jsp">return now</a></p>
+<p class="main-redirect">
+    User not found<br>you will be redirected to the login page after 5 seconds
+    <a href="index.jsp">return now</a>
+</p>
 <meta http-equiv="refresh" content="5; URL=index.jsp">
 
 <%
     }
 %>
-
 
 </body>
 </html>

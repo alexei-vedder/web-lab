@@ -70,14 +70,19 @@ a:hover {
       margin: 0 0 0 50px;
     }
 
+    &__wrapper {
+      display: flex;
+    }
+
     &__greeting {
       text-align: center;
       width: fit-content;
       position: relative;
+      cursor: default;
     }
 
     &__logout {
-      margin: 0 50px 0 0;
+      margin: 0 50px 0 30px;
       height: 33px;
       width: 70px;
     }
@@ -121,6 +126,19 @@ a:hover {
     justify-content: center;
     align-items: center;
   }
+
+  &-form {
+    width: fit-content;
+    height: fit-content;
+    margin: 30px auto;
+
+    &__button {
+      width: 100px;
+      height: 33px;
+    }
+  }
+
+
 }
 
 .login {

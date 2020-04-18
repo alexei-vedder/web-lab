@@ -1,13 +1,23 @@
 package vedder.models;
 
 import com.fasterxml.jackson.annotation.*;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.io.*;
 import java.util.Objects;
 
+@XmlType
+@XmlRootElement(name = "dish")
 public class Dish implements Serializable {
     private String name;
     private double caloriePer100g;
     private double massInG;
+
+    // this constructor is needed only for JAXB deserialization
+    public Dish() {
+    }
 
     // this constructor is needed only for jackson deserialization
     @JsonCreator
@@ -33,6 +43,7 @@ public class Dish implements Serializable {
     }
 
     @JsonGetter("dish-name")
+    @XmlElement(name = "dish-name")
     public String getName() {
         return name;
     }
@@ -43,6 +54,7 @@ public class Dish implements Serializable {
     }
 
     @JsonGetter("calorie-per-100g")
+    @XmlElement(name = "calorie-per-100g")
     public double getCaloriePer100g() {
         return caloriePer100g;
     }
@@ -55,6 +67,7 @@ public class Dish implements Serializable {
     }
 
     @JsonGetter("mass-in-g")
+    @XmlElement(name = "mass-in-g")
     public double getMassInG() {
         return massInG;
     }
@@ -67,6 +80,7 @@ public class Dish implements Serializable {
     }
 
     @JsonGetter("calorie-total")
+    @XmlElement(name = "calorie-total")
     public double getCalorieTotal() {
         return this.caloriePer100g * this.massInG / 100;
     }
