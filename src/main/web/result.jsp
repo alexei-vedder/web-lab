@@ -4,7 +4,6 @@
 <%@ page import="vedder.controllers.DBManipulator" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="vedder.models.Dish" %>
-<%@ page import="java.util.Date" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
