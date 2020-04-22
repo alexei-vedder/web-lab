@@ -1,3 +1,6 @@
+package vedder.rmi;
+
+import vedder.models.Ration;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
