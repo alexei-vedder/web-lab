@@ -13,7 +13,7 @@ import java.sql.SQLException;
 @SessionScoped
 public class DietingPersonBean {
     private DietingPerson user;
-    private DietingPersonEJB userEJB;
+    private DietingPersonEJB userEJB = new DietingPersonEJB();
 
     private String login;
     private String password;
@@ -54,10 +54,11 @@ public class DietingPersonBean {
     }
 
     public String validateUserLogin() throws SQLException, ClassNotFoundException {
-        /*boolean valid = this.userEJB.validateUserLogin(user.getLogin(), user.getPassword());
+        boolean valid = this.userEJB.validateUserLogin(login, password);
         if (valid) {
             HttpSession session = SessionUtils.getSession();
-            session.setAttribute("user", user);
+            // TODO change to "user"
+            session.setAttribute("login", login);
             return "result";
         } else {
             FacesContext.getCurrentInstance().addMessage(
@@ -66,13 +67,12 @@ public class DietingPersonBean {
                             "Incorrect login and password",
                             "Please enter correct login and password"));
             return "index";
-        }*/
-        return "";
+        }
     }
 
-    /*public String logout() {
+    public String logout() {
         HttpSession session = SessionUtils.getSession();
         session.invalidate();
-        return "login";
-    }*/
+        return "index";
+    }
 }
