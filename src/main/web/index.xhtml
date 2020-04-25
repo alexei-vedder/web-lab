@@ -16,7 +16,6 @@
           rel="stylesheet"/>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" type="javascript"></script>
-
     <title>Dieters</title>
 </h:head>
 
@@ -27,11 +26,11 @@
         <h1 class="title">DIETERS - login page</h1>
     </header>
     <h:form>
-        <!--<h:outputLabel for="login">Login</h:outputLabel>
-        <h:inputText id="login" value="#{userBean.user.login}"/>
+        <h:outputLabel for="login">Login</h:outputLabel>
+        <h:inputText id="login" value="#{userBean.login}"/>
         <h:outputLabel for="password">Password</h:outputLabel>
-        <h:inputSecret id="password" value="#{userBean.user.password}"/>
-        <h:commandButton id="submit-button" value="Submit" action="#{userBean.validateUserLogin}"/>-->
+        <h:inputSecret id="password" value="#{userBean.password}"/>
+        <h:commandButton id="submit-button" value="Submit" action="#{userBean.validateUserLogin}"/>
     </h:form>
 </h:body>
 </html>

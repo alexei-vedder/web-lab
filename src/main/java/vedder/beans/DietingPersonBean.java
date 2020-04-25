@@ -15,8 +15,8 @@ public class DietingPersonBean {
     private DietingPerson user;
     private DietingPersonEJB userEJB;
 
-    public DietingPersonBean() {
-    }
+    private String login;
+    private String password;
 
     public DietingPerson getUser() {
         return user;
@@ -32,6 +32,25 @@ public class DietingPersonBean {
 
     public void setUserEJB(DietingPersonEJB userEJB) {
         this.userEJB = userEJB;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public DietingPersonBean() {
     }
 
     public String validateUserLogin() throws SQLException, ClassNotFoundException {
@@ -51,9 +70,9 @@ public class DietingPersonBean {
         return "";
     }
 
-    public String logout() {
+    /*public String logout() {
         HttpSession session = SessionUtils.getSession();
         session.invalidate();
         return "login";
-    }
+    }*/
 }
