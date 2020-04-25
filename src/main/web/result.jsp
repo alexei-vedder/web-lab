@@ -1,7 +1,7 @@
 <%@ page import="vedder.models.DietingPerson" %>
 <%@ page import="vedder.models.Ration" %>
 <%@ page import="java.util.List" %>
-<%@ page import="vedder.controllers.DBManipulator" %>
+<%@ page import="vedder.controllers.DAO" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="vedder.models.Dish" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -22,7 +22,7 @@
     List<Ration> rations = null;
     if (user != null) {
         try {
-            rations = new DBManipulator().getUsersRations(user);
+            rations = new DAO().getUsersRations(user);
 %>
 <header class="main-header header">
     <h1 class="main-header__title title">DIETERS</h1>

@@ -78,4 +78,20 @@ public class DietingPerson {
                 this.getLogin().equals(person2.getLogin()) &&
                 this.getPassword().equals(person2.getPassword());
     }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

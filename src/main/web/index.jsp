@@ -1,6 +1,6 @@
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="vedder.models.DietingPerson" %>
-<%@ page import="vedder.controllers.DBManipulator" %>
+<%@ page import="vedder.controllers.DAO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html lang="en">
@@ -21,7 +21,7 @@
     DietingPerson userInDB = null;
     if (userInCookies != null) {
         try {
-            userInDB = new DBManipulator().getUser(userInCookies.getLogin(), userInCookies.getPassword());
+            userInDB = new DAO().getUser(userInCookies.getLogin(), userInCookies.getPassword());
             if (userInCookies.equals(userInDB)) {
                 response.sendRedirect("result.jsp");
             }
@@ -57,7 +57,7 @@
 
             if (submit != null) {
                 if (!login.equals("") && !password.equals("")) {
-                    DietingPerson user = new DBManipulator().getUser(login, password);
+                    DietingPerson user = new DAO().getUser(login, password);
                     if (user != null) {
                         HttpSession httpSession = request.getSession();
                         httpSession.setAttribute("user", user);

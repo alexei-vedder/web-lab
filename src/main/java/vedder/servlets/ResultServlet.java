@@ -1,6 +1,6 @@
 package vedder.servlets;
 
-import vedder.controllers.DBManipulator;
+import vedder.controllers.DAO;
 import vedder.models.DietingPerson;
 import vedder.models.Ration;
 
@@ -21,7 +21,7 @@ import java.util.List;
 public class ResultServlet extends HttpServlet {
 
     private String getUserDataXMLRepresentation(DietingPerson user) throws JAXBException, SQLException, ClassNotFoundException {
-        user.setRations(new DBManipulator().getUsersRations(user));
+        user.setRations(new DAO().getUsersRations(user));
 
         StringWriter writer = new StringWriter();
         JAXBContext context = JAXBContext.newInstance(DietingPerson.class);

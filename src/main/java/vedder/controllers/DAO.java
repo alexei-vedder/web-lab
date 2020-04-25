@@ -214,7 +214,7 @@ class MockValues {
     public static final Dish dish = new Dish("buckwheat", 400, 200);
 }
 
-public class DBManipulator {
+public class DAO {
     // also possible: statement.execute("SET CURRENT_SCHEMA=web-lab.web_lab_schema");
     private static final String url = "jdbc:postgresql:web-lab"; // ?currentSchema=web-lab.web_lab_schema";
     private static final String dbUsername = "postgres";
@@ -227,7 +227,7 @@ public class DBManipulator {
     }
 
     public static void main(String ...args) throws SQLException, ClassNotFoundException {
-        DBManipulator manipulator = new DBManipulator();
+        DAO manipulator = new DAO();
         // manipulator.createTables();
         // manipulator.fillTables();
         // manipulator.deleteRation(MockValues.ration);
