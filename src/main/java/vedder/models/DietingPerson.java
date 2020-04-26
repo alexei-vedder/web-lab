@@ -12,7 +12,6 @@ public class DietingPerson {
     private String password;
     private List<Ration> rations;
 
-    // this constructor is needed only for JAXB deserialization
     public DietingPerson() {
     }
 

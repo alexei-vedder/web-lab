@@ -31,7 +31,7 @@ public class AuthorizationFilter implements Filter {
 
             String reqURI = req.getRequestURI();
             if (reqURI.contains("/index.xhtml")
-                    || (session != null && session.getAttribute("login") != null) // TODO change to "user"
+                    || (session != null && session.getAttribute("user") != null)
             ) {
                 chain.doFilter(request, response);
             } else {
