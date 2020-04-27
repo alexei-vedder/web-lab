@@ -40,8 +40,7 @@ public class DietingPersonBean {
         DietingPerson userFromDB = DietingPersonEJB.validateUserLogin(user.getLogin(), user.getPassword());
         if (userFromDB != null) {
             this.user = userFromDB;
-            HttpSession session = DietingPersonEJB.getSession();
-            session.setAttribute("user", user);
+            DietingPersonEJB.setUser(user);
             return "result";
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
@@ -56,9 +55,7 @@ public class DietingPersonBean {
     }
 
     public List<Ration> getUsersRations() throws SQLException, ClassNotFoundException {
-        HttpSession session = DietingPersonEJB.getSession();
-        user = (DietingPerson) session.getAttribute("user");
-        return new DAO().getUsersRations(user);
+        return DietingPersonEJB.getUsersRations();
     }
 
     public String logout() {
