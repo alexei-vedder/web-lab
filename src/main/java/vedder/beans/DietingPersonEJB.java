@@ -13,44 +13,58 @@ import java.util.List;
 
 @Stateless
 public class DietingPersonEJB {
+    private HttpSession session;
+
+    public HttpSession getSession() {
+        return session;
+    }
+
+    public void setSession(HttpSession session) {
+        this.session = session;
+    }
 
     public DietingPersonEJB() {
+        this.updateSession();
     }
 
-    public static HttpSession getSession() {
-        return (HttpSession) FacesContext
-                .getCurrentInstance()
-                .getExternalContext()
-                .getSession(false);
-    }
-
-    public static HttpServletRequest getRequest() {
+    public HttpServletRequest getRequest() {
         return (HttpServletRequest) FacesContext
                 .getCurrentInstance()
                 .getExternalContext()
                 .getRequest();
     }
 
-    public static DietingPerson getUser() {
-        HttpSession session = getSession();
+    public DietingPerson getUser() {
         if (session != null) {
             return (DietingPerson) session.getAttribute("user");
         }
         else return null;
     }
 
-    public static void setUser(DietingPerson user) {
-        HttpSession session = DietingPersonEJB.getSession();
+    public void setUser(DietingPerson user) {
         session.setAttribute("user", user);
     }
 
-    public static DietingPerson validateUserLogin(String login, String password) throws SQLException, ClassNotFoundException {
-        return new DAO().getUser(login, password);
+    public DietingPerson validateUserLogin(String login, String password) throws SQLException, ClassNotFoundException {
+        DietingPerson user = new DAO().getUser(login, password);
+        this.setUser(user);
+        return user;
     }
 
-    public static List<Ration> getUsersRations() throws SQLException, ClassNotFoundException {
-        HttpSession session = DietingPersonEJB.getSession();
+    public List<Ration> getUsersRations() throws SQLException, ClassNotFoundException {
         DietingPerson user = (DietingPerson) session.getAttribute("user");
         return new DAO().getUsersRations(user);
+    }
+
+    public void updateSession() {
+        session = (HttpSession) FacesContext
+                .getCurrentInstance()
+                .getExternalContext()
+                .getSession(false);
+    }
+
+    public void invalidateSession() {
+        this.updateSession();
+        this.getSession().invalidate();
     }
 }
