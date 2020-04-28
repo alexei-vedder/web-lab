@@ -11,27 +11,27 @@
           rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,700;1,700&amp;display=swap"
           rel="stylesheet"/>
-    <title>Dieters</title>
+    <title>Dieters - добавить</title>
 </h:head>
 <h:body>
     <div class="insert">
         <h:form styleClass="insert-form">
             <div class="insert-input-wrapper">
                 <h:outputLabel styleClass="insert-form__label label" for="name">Название
-                    <h:inputText styleClass="insert-form__input input" id="name" value="#{userBean.dish.name}">
+                    <h:inputText styleClass="insert-form__input input" id="name" value="#{userBean.dish.name}" validatorMessage="Введите корректное название">
                         <f:validateRequired/>
                     </h:inputText>
                 </h:outputLabel>
                 <h:outputLabel styleClass="insert-form__label label" for="calorie">Кол-во калорий на 100 грамм
-                    <h:inputText styleClass="insert-form__input input" id="calorie" value="#{userBean.dish.caloriePer100g}">
+                    <h:inputText styleClass="insert-form__input input" id="calorie" value="#{userBean.dish.caloriePer100g}" validatorMessage="Введите корректные калории">
                         <f:validateRequired/>
-                        <f:validateDoubleRange/>
+                        <f:validateDoubleRange minimum="0.001" maximum="10000"/>
                     </h:inputText>
                 </h:outputLabel>
                 <h:outputLabel styleClass="insert-form__label label" for="mass">Масса в граммах
-                    <h:inputText styleClass="insert-form__input input" id="mass" value="#{userBean.dish.massInG}">
+                    <h:inputText styleClass="insert-form__input input" id="mass" value="#{userBean.dish.massInG}" validatorMessage="Введите корректную массу">
                         <f:validateRequired/>
-                        <f:validateDoubleRange/>
+                        <f:validateDoubleRange minimum="0.001" maximum="10000"/>
                     </h:inputText>
                 </h:outputLabel>
             </div>

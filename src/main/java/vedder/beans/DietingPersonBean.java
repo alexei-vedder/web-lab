@@ -3,6 +3,7 @@ package vedder.beans;
 import vedder.models.DietingPerson;
 import vedder.models.Dish;
 import vedder.models.Ration;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -64,7 +65,7 @@ public class DietingPersonBean {
             this.user = userFromDB;
             return "result";
         } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Некорректные данные"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Такого пользователя не существует"));
             return "index";
         }
     }
@@ -83,15 +84,20 @@ public class DietingPersonBean {
     }
 
     public String goToInsertPage() {
-        // TODO validation
         return "insert";
     }
 
     public String insertAndGoToResultPage() {
-        // TODO validation
-        // TODO insert in DB
+        try {
+            userEJB.addDish(dish, rationId);
+            return "result";
+        } catch (SQLException | ClassNotFoundException e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Ошибка добавления"));
+            return "insert";
+        }
+    }
 
-        userEJB.addNewDish(dish, rationId);
-        return "result";
+    public String getResultXml() {
+        return userEJB.getUserDataXMLRepresentation();
     }
 }

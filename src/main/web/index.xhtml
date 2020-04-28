@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;531;600;700;800;900&amp;display=swap"
           rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,700;1,700&amp;display=swap" rel="stylesheet"/>
-    <title>Dieters</title>
+    <title>Dieters - вход в систему</title>
 </h:head>
 
 <h:body>
@@ -23,14 +23,14 @@
             Пожалуйста, введите логин и пароль
             <div class="login-input-wrapper">
                 <h:outputLabel styleClass="login-form__label label" for="login">Логин
-                    <h:inputText validatorMessage="Некорректный логин"
+                    <h:inputText validatorMessage="Введите логин"
                                  styleClass="login-form__input input"
                                  id="login" value="#{userBean.user.login}">
                         <f:validateRequired/>
                     </h:inputText>
                 </h:outputLabel>
                 <h:outputLabel styleClass="login-form__label label" for="password">Пароль
-                    <h:inputSecret validatorMessage="Некорректный пароль"
+                    <h:inputSecret validatorMessage="Введите пароль"
                                    styleClass="login-form__input input"
                                    id="password"
                                    value="#{userBean.user.password}">
@@ -42,7 +42,7 @@
                              id="submit-button" value="Подтвердить"
                              action="#{userBean.goToResultPage}"/>
         </h:form>
-        <h:messages styleClass="login-error error"/>
+        <h:messages styleClass="login-error"/>
     </div>
 </h:body>
 </html>

@@ -107,6 +107,6 @@ public class Ration implements Serializable {
 
     @Override
     public String toString() {
-        return getId().toString() + " " + getDishList();
+        return getIdAsString() + " " + getDishList();
     }
 }

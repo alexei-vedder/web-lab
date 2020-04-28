@@ -114,7 +114,7 @@ a:hover {
 
     &-form {
         background: @login-form-color;
-        margin: auto auto;
+        margin: 10px auto;
         width: fit-content;
         display: flex;
         flex-direction: column;
@@ -147,8 +147,10 @@ a:hover {
         background: transparent;
     }
 
-    &-error {
+    &-error > li {
+        display: block;
         margin: 20px auto;
+        .error
     }
 }
 
@@ -192,7 +194,7 @@ a:hover {
         border: solid 3px @main-text-color;
 
         &-wrapper {
-
+            margin: 10px;
         }
 
         &__head-row > th, &__row > td {

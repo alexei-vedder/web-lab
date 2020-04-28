@@ -8,7 +8,12 @@ import vedder.models.Ration;
 import javax.ejb.Stateless;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import java.io.StringWriter;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
@@ -36,11 +41,17 @@ public class DietingPersonEJB {
                 .getRequest();
     }
 
+    public HttpServletResponse getResponse() {
+        return (HttpServletResponse) FacesContext
+                .getCurrentInstance()
+                .getExternalContext()
+                .getResponse();
+    }
+
     public DietingPerson getUser() {
         if (session != null) {
             return (DietingPerson) session.getAttribute("user");
-        }
-        else return null;
+        } else return null;
     }
 
     public void setUser(DietingPerson user) {
@@ -58,8 +69,8 @@ public class DietingPersonEJB {
         return new DAO().getUsersRations(user);
     }
 
-    public void addNewDish(Dish dish, Timestamp rationId) {
-        new DAO().addNewDish(dish, rationId);
+    public void addDish(Dish dish, Timestamp rationId) throws SQLException, ClassNotFoundException {
+        new DAO().addDish(dish, rationId);
     }
 
     public void updateSession() {
@@ -81,7 +92,22 @@ public class DietingPersonEJB {
     public Timestamp getRationId() {
         if (session != null) {
             return (Timestamp) session.getAttribute("rationId");
+        } else return null;
+    }
+
+    public String getUserDataXMLRepresentation() {
+        DietingPerson user = getUser();
+        try {
+            user.setRations(getUsersRations());
+            StringWriter writer = new StringWriter();
+            JAXBContext context = JAXBContext.newInstance(DietingPerson.class);
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            marshaller.marshal(getUser(), writer);
+            return writer.toString();
+        } catch (ClassNotFoundException | SQLException | JAXBException e) {
+            e.printStackTrace();
+            return "";
         }
-        else return null;
     }
 }

@@ -38,7 +38,7 @@ public class AuthorizationFilter implements Filter {
                 resp.sendRedirect(req.getContextPath() + "/index.xhtml");
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 

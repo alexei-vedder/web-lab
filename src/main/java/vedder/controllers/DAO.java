@@ -279,14 +279,42 @@ public class DAO {
             connection.commit();
             System.out.println("the ration has been deleted");
             statement.close();
+            connection.releaseSavepoint(savepoint);
         } catch (SQLException e) {
-            System.out.println(e);
+            e.printStackTrace();
             connection.rollback(savepoint);
         } finally {
-            connection.releaseSavepoint(savepoint);
             connection.close();
         }
 
+    }
+
+    public void addDish(Dish dish, Timestamp rationId) throws SQLException, ClassNotFoundException {
+        Connection connection = this.connect();
+        connection.setAutoCommit(false);
+        PreparedStatement statement = null;
+        Savepoint savepoint = connection.setSavepoint();
+        try {
+            statement = connection.prepareStatement("INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES (?, ?, ?)");
+            statement.setString(1, dish.getName());
+            statement.setDouble(2, dish.getCaloriePer100g());
+            statement.setDouble(3, dish.getMassInG());
+            statement.executeUpdate();
+
+            statement = connection.prepareStatement("INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES (?, ?)");
+            statement.setTimestamp(1, rationId);
+            statement.setString(2, dish.getName());
+            statement.executeUpdate();
+            connection.commit();
+            System.out.println("a new dish has been added");
+            statement.close();
+            connection.releaseSavepoint(savepoint);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            connection.rollback(savepoint);
+        } finally {
+            connection.close();
+        }
     }
 
     public void deleteDish(Dish dish) throws SQLException, ClassNotFoundException {
@@ -305,11 +333,11 @@ public class DAO {
             connection.commit();
             System.out.println("the dish has been deleted");
             statement.close();
+            connection.releaseSavepoint(savepoint);
         } catch (SQLException e) {
-            System.out.println(e);
+            e.printStackTrace();
             connection.rollback(savepoint);
         } finally {
-            connection.releaseSavepoint(savepoint);
             connection.close();
         }
     }
@@ -403,9 +431,5 @@ public class DAO {
         statement.close();
         connection.close();
         return sum;
-    }
-
-    public void addNewDish(Dish dish, Timestamp rationId) {
-
     }
 }
