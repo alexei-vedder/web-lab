@@ -2,6 +2,7 @@ package vedder.beans;
 
 import vedder.controllers.DAO;
 import vedder.models.DietingPerson;
+import vedder.models.Dish;
 import vedder.models.Ration;
 
 import javax.ejb.Stateless;
@@ -9,6 +10,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Stateless
@@ -56,6 +58,10 @@ public class DietingPersonEJB {
         return new DAO().getUsersRations(user);
     }
 
+    public void addNewDish(Dish dish, Timestamp rationId) {
+        new DAO().addNewDish(dish, rationId);
+    }
+
     public void updateSession() {
         session = (HttpSession) FacesContext
                 .getCurrentInstance()
@@ -66,5 +72,16 @@ public class DietingPersonEJB {
     public void invalidateSession() {
         this.updateSession();
         this.getSession().invalidate();
+    }
+
+    public void setRationId(Timestamp ration) {
+        session.setAttribute("rationId", ration);
+    }
+
+    public Timestamp getRationId() {
+        if (session != null) {
+            return (Timestamp) session.getAttribute("rationId");
+        }
+        else return null;
     }
 }

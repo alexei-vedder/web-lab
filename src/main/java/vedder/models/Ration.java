@@ -63,6 +63,14 @@ public class Ration implements Serializable {
         return this.dishList;
     }
 
+    public void setDishList(List<Dish> dishList) {
+        this.dishList = dishList;
+    }
+
+    public void setId(Timestamp id) {
+        this.id = id;
+    }
+
     public void remove(int index) {
         if (0 <= index && index < this.dishList.size()) {
             this.dishList.remove(index);

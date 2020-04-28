@@ -404,4 +404,8 @@ public class DAO {
         connection.close();
         return sum;
     }
+
+    public void addNewDish(Dish dish, Timestamp rationId) {
+
+    }
 }

@@ -25,33 +25,41 @@
     <div>
         <div class="main-wrapper">
             <ui:repeat var="ration" value="#{userBean.usersRations}">
-                <h:dataTable var="dish"
-                             value="#{ration.dishList}"
-                             styleClass="main-table table"
-                             headerClass="main-table__head-row"
-                             rowClasses="main-table__row">
-                    <h:column>
-                        <f:facet name="header">Имя</f:facet>
-                        #{dish.name}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Калории (на 100г)</f:facet>
-                        #{dish.caloriePer100g}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Масса (г)</f:facet>
-                        #{dish.massInG}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Калории (всего)</f:facet>
-                        #{dish.calorieTotal}
-                    </h:column>
-                </h:dataTable>
+                <div class="main-table-wrapper">
+                    <h:dataTable var="dish"
+                                 value="#{ration.dishList}"
+                                 styleClass="main-table table"
+                                 headerClass="main-table__head-row"
+                                 rowClasses="main-table__row">
+                        <h:column>
+                            <f:facet name="header">Имя</f:facet>
+                            #{dish.name}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Калории (на 100г)</f:facet>
+                            #{dish.caloriePer100g}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Масса (г)</f:facet>
+                            #{dish.massInG}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Калории (всего)</f:facet>
+                            #{dish.calorieTotal}
+                        </h:column>
+                    </h:dataTable>
+                    <h:form styleClass="main-table__insert-form">
+                        <h:commandButton styleClass="main-table__insert-button button"
+                                         value="добавить"
+                                         action="#{userBean.goToInsertPage}">
+                            <f:setPropertyActionListener target="#{userBean.rationId}" value="#{ration.id}" />
+                        </h:commandButton>
+                    </h:form>
+                </div>
             </ui:repeat>
         </div>
-        <h:form styleClass="main-form">
-            <h:commandButton styleClass="main-form__button button"
-                             id="submit-button"
+        <h:form styleClass="main__xml-form">
+            <h:commandButton styleClass="main__xml-button button"
                              value="XML формат"
                              action="#{userBean.seeXmlView}"/>
         </h:form>
