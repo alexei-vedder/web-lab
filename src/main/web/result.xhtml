@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <h:outputStylesheet library="css" name="main.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;531;600;700;800;900&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,700;1,700&amp;display=swap"
+          rel="stylesheet"/>
+    <title>Dieters - главная</title>
+</h:head>
+<h:body>
+    <div class="main-header header">
+        <h1 class="main-header__title title">DIETERS</h1>
+        <h:form styleClass="main-header__wrapper">
+            <h2 class="main-header__greeting">Привет, #{userBean.user.name}</h2>
+            <h:commandButton styleClass="main-header__logout button" action="#{userBean.logout}" value="Выйти"/>
+        </h:form>
+    </div>
+    <div>
+        <div class="main-wrapper">
+            <ui:repeat var="ration" value="#{userBean.usersRations}">
+                <div class="main-table-wrapper">
+                    <h:dataTable var="dish"
+                                 value="#{ration.dishList}"
+                                 styleClass="main-table table"
+                                 headerClass="main-table__head-row"
+                                 rowClasses="main-table__row">
+                        <h:column>
+                            <f:facet name="header">Имя</f:facet>
+                            #{dish.name}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Калории (на 100г)</f:facet>
+                            #{dish.caloriePer100g}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Масса (г)</f:facet>
+                            #{dish.massInG}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Калории (всего)</f:facet>
+                            #{dish.calorieTotal}
+                        </h:column>
+                    </h:dataTable>
+                    <h:form styleClass="main-table__insert-form">
+                        <h:commandButton styleClass="main-table__insert-button button"
+                                         value="добавить"
+                                         action="#{userBean.goToInsertPage}">
+                            <f:setPropertyActionListener target="#{userBean.rationId}" value="#{ration.id}" />
+                        </h:commandButton>
+                    </h:form>
+                </div>
+            </ui:repeat>
+        </div>
+        <h:form styleClass="main__xml-form">
+            <h:commandButton styleClass="main__xml-button button"
+                             value="XML формат"
+                             action="#{userBean.seeXmlView}"/>
+        </h:form>
+    </div>
+</h:body>
+
+</html>

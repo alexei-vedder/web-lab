@@ -15,7 +15,6 @@ public class Dish implements Serializable {
     private double caloriePer100g;
     private double massInG;
 
-    // this constructor is needed only for JAXB deserialization
     public Dish() {
     }
 
@@ -60,7 +59,7 @@ public class Dish implements Serializable {
     }
 
     @JsonSetter("calorie-per-100g")
-    public void setCaloriePer100g(int caloriePer100g) {
+    public void setCaloriePer100g(double caloriePer100g) {
         if (caloriePer100g >= 0) {
             this.caloriePer100g = caloriePer100g;
         } else throw new IllegalArgumentException("wrong argument");
@@ -73,7 +72,7 @@ public class Dish implements Serializable {
     }
 
     @JsonSetter("mass-in-g")
-    public void setMassInG(int massInG) {
+    public void setMassInG(double massInG) {
         if (massInG > 0) {
             this.massInG = massInG;
         } else throw new IllegalArgumentException("wrong argument");

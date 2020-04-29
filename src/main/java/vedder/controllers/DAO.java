@@ -214,7 +214,8 @@ class MockValues {
     public static final Dish dish = new Dish("buckwheat", 400, 200);
 }
 
-public class DBManipulator {
+// TODO what's the f*ck with releaseSavepoint? check addition through insert page 
+public class DAO {
     // also possible: statement.execute("SET CURRENT_SCHEMA=web-lab.web_lab_schema");
     private static final String url = "jdbc:postgresql:web-lab"; // ?currentSchema=web-lab.web_lab_schema";
     private static final String dbUsername = "postgres";
@@ -227,7 +228,7 @@ public class DBManipulator {
     }
 
     public static void main(String ...args) throws SQLException, ClassNotFoundException {
-        DBManipulator manipulator = new DBManipulator();
+        DAO manipulator = new DAO();
         // manipulator.createTables();
         // manipulator.fillTables();
         // manipulator.deleteRation(MockValues.ration);
@@ -279,14 +280,42 @@ public class DBManipulator {
             connection.commit();
             System.out.println("the ration has been deleted");
             statement.close();
+            connection.releaseSavepoint(savepoint);
         } catch (SQLException e) {
-            System.out.println(e);
+            e.printStackTrace();
             connection.rollback(savepoint);
         } finally {
-            connection.releaseSavepoint(savepoint);
             connection.close();
         }
 
+    }
+
+    public void addDish(Dish dish, Timestamp rationId) throws SQLException, ClassNotFoundException {
+        Connection connection = this.connect();
+        connection.setAutoCommit(false);
+        PreparedStatement statement = null;
+        Savepoint savepoint = connection.setSavepoint();
+        try {
+            statement = connection.prepareStatement("INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) VALUES (?, ?, ?)");
+            statement.setString(1, dish.getName());
+            statement.setDouble(2, dish.getCaloriePer100g());
+            statement.setDouble(3, dish.getMassInG());
+            statement.executeUpdate();
+
+            statement = connection.prepareStatement("INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES (?, ?)");
+            statement.setTimestamp(1, rationId);
+            statement.setString(2, dish.getName());
+            statement.executeUpdate();
+            connection.commit();
+            System.out.println("a new dish has been added");
+            statement.close();
+            connection.releaseSavepoint(savepoint);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            connection.rollback(savepoint);
+        } finally {
+            connection.close();
+        }
     }
 
     public void deleteDish(Dish dish) throws SQLException, ClassNotFoundException {
@@ -305,11 +334,11 @@ public class DBManipulator {
             connection.commit();
             System.out.println("the dish has been deleted");
             statement.close();
+            connection.releaseSavepoint(savepoint);
         } catch (SQLException e) {
-            System.out.println(e);
+            e.printStackTrace();
             connection.rollback(savepoint);
         } finally {
-            connection.releaseSavepoint(savepoint);
             connection.close();
         }
     }

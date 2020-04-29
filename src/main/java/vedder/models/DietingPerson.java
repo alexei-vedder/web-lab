@@ -12,7 +12,6 @@ public class DietingPerson {
     private String password;
     private List<Ration> rations;
 
-    // this constructor is needed only for JAXB deserialization
     public DietingPerson() {
     }
 
@@ -77,5 +76,21 @@ public class DietingPerson {
                 this.getId().toString().equals(person2.getId().toString()) &&
                 this.getLogin().equals(person2.getLogin()) &&
                 this.getPassword().equals(person2.getPassword());
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
