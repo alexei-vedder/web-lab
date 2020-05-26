@@ -2,6 +2,7 @@ package vedder.models;
 
 import com.fasterxml.jackson.annotation.*;
 
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
@@ -10,9 +11,38 @@ import java.util.Objects;
 
 @XmlType
 @XmlRootElement(name = "dish")
+@Entity
+@Table(name = "dish", schema = "web_lab_schema", catalog = "web-lab")
+@SqlResultSetMapping(
+        name = "dish",
+        entities = @EntityResult(entityClass = Dish.class)
+)
+@NamedNativeQueries({
+        @NamedNativeQuery(
+                name = "Dish.getDishesByRationId",
+                query = "SELECT * " +
+                        "FROM web_lab_schema.dish " +
+                        "WHERE name IN(" +
+                        "SELECT dish_name " +
+                        "FROM web_lab_schema.ration_dish " +
+                        "WHERE ration_id = :ration_id" +
+                        ")",
+                resultSetMapping = "dish"
+        ),
+
+        @NamedNativeQuery(
+                name = "Dish.insertNewDish",
+                query = "INSERT INTO web_lab_schema.dish (name, calorie_per_100g, mass_in_g) " +
+                        "VALUES (:name, :calorie_per_100g, :mass_in_g)"
+        )
+})
 public class Dish implements Serializable {
+    @Id
+    @Column(name = "name")
     private String name;
+    @Column(name = "calorie_per_100g")
     private double caloriePer100g;
+    @Column(name = "mass_in_g")
     private double massInG;
 
     public Dish() {
@@ -91,8 +121,8 @@ public class Dish implements Serializable {
         Dish dish = (Dish) o;
         return
                 Objects.equals(this.name, dish.name)
-                && Double.compare(this.caloriePer100g, dish.caloriePer100g) == 0
-                && Double.compare(this.massInG, dish.massInG) == 0;
+                        && Double.compare(this.caloriePer100g, dish.caloriePer100g) == 0
+                        && Double.compare(this.massInG, dish.massInG) == 0;
     }
 
     @Override

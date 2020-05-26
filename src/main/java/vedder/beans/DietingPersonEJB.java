@@ -1,12 +1,12 @@
 package vedder.beans;
 
-import vedder.controllers.DAO;
 import vedder.models.DietingPerson;
 import vedder.models.Dish;
 import vedder.models.Ration;
 
 import javax.ejb.Stateless;
 import javax.faces.context.FacesContext;
+import javax.persistence.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,12 +14,16 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import java.io.StringWriter;
-import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 @Stateless
 public class DietingPersonEJB {
+
+    public EntityManager entityManager = Persistence.createEntityManagerFactory("UNIT").createEntityManager();
+
     private HttpSession session;
 
     public HttpSession getSession() {
@@ -58,19 +62,57 @@ public class DietingPersonEJB {
         session.setAttribute("user", user);
     }
 
-    public DietingPerson validateUserLogin(String login, String password) throws SQLException, ClassNotFoundException {
-        DietingPerson user = new DAO().getUser(login, password);
-        this.setUser(user);
+    public DietingPerson validateUserLogin(String login, String password) {
+        entityManager.getTransaction().begin();
+        TypedQuery<DietingPerson> query = entityManager.createNamedQuery("DietingPerson.getUser", DietingPerson.class)
+                .setParameter("login", login)
+                .setParameter("password", password);
+        DietingPerson user = query.getSingleResult();
+        entityManager.getTransaction().commit();
+        setUser(user);
         return user;
     }
 
-    public List<Ration> getUsersRations() throws SQLException, ClassNotFoundException {
+    public List<Ration> getUsersRations() {
         DietingPerson user = (DietingPerson) session.getAttribute("user");
-        return new DAO().getUsersRations(user);
+        List<Ration> rations = null;
+        try {
+            entityManager.getTransaction().begin();
+            TypedQuery<Date> rationIdsQuery = entityManager.createNamedQuery("Ration.getUsersRationIds", Date.class)
+                    .setParameter("dieting_person_id", user.getId());
+            List<Date> usersRationIds = rationIdsQuery.getResultList();
+            rations = new LinkedList<>();
+            for (Date rationId : usersRationIds) {
+                TypedQuery<Dish> dishListQuery = entityManager.createNamedQuery("Dish.getDishesByRationId", Dish.class)
+                        .setParameter("ration_id", rationId);
+                List<Dish> dishList = dishListQuery.getResultList();
+                Ration ration = new Ration(dishList, (Timestamp) rationId);
+                rations.add(ration);
+            }
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+            entityManager.getTransaction().rollback();
+        }
+        entityManager.getTransaction().commit();
+        return rations;
     }
 
-    public void addDish(Dish dish, Timestamp rationId) throws SQLException, ClassNotFoundException {
-        new DAO().addDish(dish, rationId);
+    public void addDish(Dish dish, Timestamp rationId) {
+        entityManager.getTransaction().begin();
+        try {
+            entityManager.createNamedQuery("Dish.insertNewDish").setParameter("name", dish.getName())
+                    .setParameter("calorie_per_100g", dish.getCaloriePer100g())
+                    .setParameter("mass_in_g", dish.getMassInG())
+                    .executeUpdate();
+            entityManager.createNativeQuery("INSERT INTO web_lab_schema.ration_dish (ration_id, dish_name) VALUES (:ration_id, :dish_name)")
+                    .setParameter("ration_id", rationId)
+                    .setParameter("dish_name", dish.getName())
+                    .executeUpdate();
+            entityManager.getTransaction().commit();
+        } catch (PersistenceException e) {
+            entityManager.getTransaction().rollback();
+            e.printStackTrace();
+        }
     }
 
     public void updateSession() {
@@ -105,7 +147,7 @@ public class DietingPersonEJB {
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             marshaller.marshal(getUser(), writer);
             return writer.toString();
-        } catch (ClassNotFoundException | SQLException | JAXBException e) {
+        } catch (JAXBException e) {
             e.printStackTrace();
             return "";
         }

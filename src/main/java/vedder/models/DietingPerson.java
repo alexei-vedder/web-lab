@@ -1,15 +1,28 @@
 package vedder.models;
 
+import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 import java.util.*;
 
 @XmlType
 @XmlRootElement(name = "dieter")
+@Entity
+@Table(name = "dieting_person", schema = "web_lab_schema", catalog = "web-lab")
+@NamedQuery(
+        name = "DietingPerson.getUser",
+        query = "FROM DietingPerson user WHERE user.login = :login AND user.password = :password"
+)
 public class DietingPerson {
+    @Id
+    @Column(name = "id")
     private UUID id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "login")
     private String login;
+    @Column(name = "password")
     private String password;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "dietingPerson")
     private List<Ration> rations;
 
     public DietingPerson() {
