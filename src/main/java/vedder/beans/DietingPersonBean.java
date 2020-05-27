@@ -8,7 +8,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -59,7 +58,7 @@ public class DietingPersonBean {
         this.dish = dish;
     }
 
-    public String goToResultPage() throws SQLException, ClassNotFoundException {
+    public String goToResultPage() {
         DietingPerson userFromDB = userEJB.validateUserLogin(user.getLogin(), user.getPassword());
         if (userFromDB != null) {
             this.user = userFromDB;
@@ -70,11 +69,11 @@ public class DietingPersonBean {
         }
     }
 
-    public String seeXmlView() throws SQLException, ClassNotFoundException {
+    public String seeXmlView() {
         return this.goToResultPage().equals("index") ? "index" : "resultXML";
     }
 
-    public List<Ration> getUsersRations() throws SQLException, ClassNotFoundException {
+    public List<Ration> getUsersRations() {
         return userEJB.getUsersRations();
     }
 
@@ -88,13 +87,10 @@ public class DietingPersonBean {
     }
 
     public String insertAndGoToResultPage() {
-        try {
-            userEJB.addDish(dish, rationId);
-            return "result";
-        } catch (SQLException | ClassNotFoundException e) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Ошибка добавления"));
-            return "insert";
-        }
+        userEJB.addDish(dish, rationId);
+        dish = null;
+        rationId = null;
+        return "result";
     }
 
     public String getResultXml() {

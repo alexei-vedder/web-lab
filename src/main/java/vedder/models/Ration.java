@@ -4,20 +4,41 @@ import java.io.*;
 import java.sql.Timestamp;
 import java.util.*;
 import java.util.stream.Collectors;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 
 @XmlType
 @XmlRootElement(name = "ration")
+@Entity
+@Table(name = "ration", schema = "web_lab_schema", catalog = "web-lab")
+@NamedQuery(
+        name = "Ration.getUsersRationIds",
+        query = "SELECT ration.id FROM Ration ration WHERE ration.dietingPerson.id = :dieting_person_id"
+)
 public class Ration implements Serializable {
+
     @JsonProperty("dishList")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    @JoinTable(name = "ration_dish",
+            joinColumns = {@JoinColumn(name = "ration_id")},
+            inverseJoinColumns = {@JoinColumn(name = "dish_name")}
+    )
     private List<Dish> dishList;
+
     @JsonProperty
+    @Id
+    @Column(name = "id")
     private Timestamp id;
+
+    @ManyToOne
+    @JoinColumn(name = "dieting_person_id")
+    private DietingPerson dietingPerson;
 
     @Deprecated
     public Ration() {
@@ -69,6 +90,14 @@ public class Ration implements Serializable {
 
     public void setId(Timestamp id) {
         this.id = id;
+    }
+
+    public DietingPerson getDietingPerson() {
+        return dietingPerson;
+    }
+
+    public void setDietingPerson(DietingPerson dietingPerson) {
+        this.dietingPerson = dietingPerson;
     }
 
     public void remove(int index) {

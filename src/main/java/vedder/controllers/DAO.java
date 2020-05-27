@@ -214,7 +214,6 @@ class MockValues {
     public static final Dish dish = new Dish("buckwheat", 400, 200);
 }
 
-// TODO what's the f*ck with releaseSavepoint? check addition through insert page 
 public class DAO {
     // also possible: statement.execute("SET CURRENT_SCHEMA=web-lab.web_lab_schema");
     private static final String url = "jdbc:postgresql:web-lab"; // ?currentSchema=web-lab.web_lab_schema";
